@@ -34,18 +34,23 @@
 
         <!-- Call to Actions -->
         <div class="actions">
-            <a href="https://calendar.app.google/rQ9cVBa9Xbc49BBF8" target="_blank" rel="noopener noreferrer"
-                class="btn btn-primary" id="calendar-link">
-                <!-- Google Calendar Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                שיבוץ למועד בחינה
-            </a>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                <a href="https://calendar.app.google/rQ9cVBa9Xbc49BBF8" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary" id="calendar-link">
+                    <!-- Google Calendar Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    שיבוץ למועד בחינה
+                </a>
+                <p style="color: #94a3b8; font-size: 0.95rem; text-align: center; max-width: 90%;">
+                    * שימו לב: נא להירשם רק פעם אחת
+                </p>
+            </div>
         </div>
 
     </div>
@@ -53,11 +58,18 @@
     <script>
         // ברגע שיהיה סרטון יוטיוב מוכן, פשוט תעתיק את ה-ID שלו לכאן
         // לדוגמה, אם הקישור הוא https://www.youtube.com/watch?v=dQw4w9WgXcQ אז ה-ID הוא dQw4w9WgXcQ
-        const YOUTUBE_VIDEO_ID = 'dQw4w9WgXcQ';
+        const YOUTUBE_VIDEO_ID = 'YMqPibiEYIE';
 
         const videoSlot = document.getElementById('video-placeholder');
 
         if (YOUTUBE_VIDEO_ID) {
+            // ניקוי מוחלט של מחלקת הפלייסחולדר שעלולה לחסום לחיצות עם ::before או אפקטים אחרים
+            videoSlot.className = '';
+            videoSlot.style.width = '100%';
+            videoSlot.style.aspectRatio = '16 / 9';
+            videoSlot.style.borderRadius = '16px';
+            videoSlot.style.overflow = 'hidden';
+
             // החלפת הפלייסחולדר בנגן יוטיוב
             videoSlot.innerHTML = `
                 <iframe 
@@ -70,10 +82,6 @@
                     allowfullscreen>
                 </iframe>
             `;
-            // הסרת האפקטים והגבולות של הפלייסחולדר
-            videoSlot.style.border = 'none';
-            videoSlot.style.background = 'transparent';
-            videoSlot.style.cursor = 'default';
         } else {
             // התנהגות ברירת מחדל עד שיהיה סרטון
             videoSlot.addEventListener('click', function () {

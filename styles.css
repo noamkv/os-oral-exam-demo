@@ -77,10 +77,14 @@ body {
 .video-slot::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: radial-gradient(circle at center, rgba(129, 140, 248, 0.1) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .video-slot:hover {
@@ -156,16 +160,16 @@ body {
     .container {
         padding: 2rem 1.5rem;
     }
-    
+
     .header h1 {
         font-size: 2rem;
     }
-    
+
     .actions {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .btn {
         width: 100%;
         justify-content: center;
